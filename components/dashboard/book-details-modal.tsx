@@ -149,7 +149,7 @@ export function BookDetailsModal({
 
               {book.price && (
                 <div className="flex items-center space-x-3 p-3 bg-green-50 rounded-xl border border-green-200">
-                  <DollarSign className="h-5 w-5 text-green-600" />
+                  <span className="text-green-600 font-bold text-lg">₹</span>
                   <div>
                     <span className="text-sm font-black text-gray-900 block">Price</span>
                     <span className="text-lg font-black text-green-700">₹{book.price}</span>

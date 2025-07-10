@@ -718,7 +718,7 @@ export function BookSearch() {
                     )}
                     {book.price && (
                       <div className="flex items-center gap-2">
-                        <DollarSign className="h-3 w-3 text-green-600" />
+                        <span className="text-green-600 font-bold text-sm">₹</span>
                         <span className="text-xs font-bold text-gray-700">Price:</span>
                         <span className="text-xs font-black text-green-700">₹{book.price}</span>
                       </div>
