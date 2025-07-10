@@ -75,7 +75,7 @@ export function LoginForm() {
           <CardHeader className="text-center pb-8 pt-8">
             <CardTitle className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight mb-2">User Authentication</CardTitle>
             <CardDescription className="text-gray-700 text-sm sm:text-base font-bold">
-              Please enter your credentials to access the library system.
+              Please enter your credentials to access the library system
             </CardDescription>
           </CardHeader>
           <CardContent className="px-8 pb-8 bg-gradient-to-b from-transparent to-gray-50/30">
