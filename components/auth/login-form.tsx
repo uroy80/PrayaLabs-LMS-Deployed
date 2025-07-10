@@ -57,6 +57,10 @@ export function LoginForm() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       <div className="w-full max-w-md space-y-8">
+        {/* Header Section */}
+        <div className="text-center space-y-4">
+          <div className="flex justify-center">
+            <div className="bg-blue-900 p-3 rounded-2xl border-2 border-blue-800 shadow-lg">
               <BookOpen className="h-12 w-12 text-white" />
             </div>
           </div>
@@ -64,6 +68,7 @@ export function LoginForm() {
             <h1 className="text-4xl font-bold text-gray-900 tracking-tight">Library Management System</h1>
             <p className="text-lg text-gray-600 font-medium">Institutional Access Portal</p>
           </div>
+        </div>
         </div>
 
         {/* Login Card */}
