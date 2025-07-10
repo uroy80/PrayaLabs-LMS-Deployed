@@ -18,6 +18,33 @@ This guide provides comprehensive instructions for deploying the Library Managem
 - Domain name (optional but recommended)
 - SSL certificate (Let's Encrypt recommended)
 
+## Deployment Options
+
+### **Recommended: Vercel Deployment (Easiest)**
+
+**Quick Vercel Setup:**
+```bash
+# 1. Push your code to GitHub
+git add .
+git commit -m "Ready for Vercel deployment"
+git push origin main
+
+# 2. Go to vercel.com and import your repository
+# 3. Set environment variable: NEXT_PUBLIC_LIBRARY_API_URL=https://lib.prayalabs.com
+# 4. Deploy!
+```
+
+**Vercel Configuration Included:**
+- ✅ `vercel.json` - Deployment configuration
+- ✅ Optimized `next.config.mjs`
+- ✅ CORS headers for API routes
+- ✅ Production build settings
+- ✅ Error handling for environment variables
+
+### **Recommended: VPS Deployment**
+
+For production deployment, we recommend using a **Virtual Private Server (VPS)**. See our comprehensive [VPS Deployment Guide](./DEPLOYMENT_GUIDE.md) for detailed instructions.
+
 ## Environment Configuration
 
 ### Environment Variables for Production
