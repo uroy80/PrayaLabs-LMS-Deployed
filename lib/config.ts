@@ -8,23 +8,32 @@ const requiredEnvVars = {
   NEXT_PUBLIC_LIBRARY_API_URL: process.env.NEXT_PUBLIC_LIBRARY_API_URL,
 } as const
 
-// Check for missing environment variables
+// Check for missing environment variables with better error handling
 const missingEnvVars = Object.entries(requiredEnvVars)
   .filter(([_, value]) => !value)
   .map(([key]) => key)
 
 if (missingEnvVars.length > 0) {
-  throw new Error(
-    `Missing required environment variables: ${missingEnvVars.join(", ")}\n` +
-      "Please check your .env.local file and ensure all required variables are set.",
-  )
+  // Only throw error in production or when explicitly required
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error(
+      `Missing required environment variables: ${missingEnvVars.join(", ")}\n` +
+        "Please check your .env.local file and ensure all required variables are set.",
+    )
+  } else {
+    // In development, log warning but don't crash
+    console.warn(
+      `⚠️  Missing environment variables: ${missingEnvVars.join(", ")}\n` +
+        "Please create a .env.local file with the required variables. See .env.example for reference.",
+    )
+  }
 }
 
 /**
  * API Configuration
  */
 export const API_CONFIG = {
-  BASE_URL: requiredEnvVars.NEXT_PUBLIC_LIBRARY_API_URL!,
+  BASE_URL: requiredEnvVars.NEXT_PUBLIC_LIBRARY_API_URL || 'https://lib.prayalabs.com',
   ENDPOINTS: {
     // Authentication
     LOGIN: "/web/user/login",

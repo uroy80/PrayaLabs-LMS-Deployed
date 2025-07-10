@@ -65,9 +65,9 @@ NEXT_PUBLIC_APP_VERSION=1.0.0
 
 2. **Install dependencies:**
    \`\`\`bash
-   npm install
+   npm install --legacy-peer-deps
    # or
-   yarn install
+   yarn install --legacy-peer-deps
    \`\`\`
 
 3. **Set up environment variables:**
@@ -229,6 +229,7 @@ NEXT_PUBLIC_APP_VERSION=1.0.0
 
 \`\`\`bash
 # Build the application
+npm install --legacy-peer-deps
 npm run build
 
 # Start production server
