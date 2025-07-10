@@ -410,18 +410,18 @@ export function BookSearch() {
     <div className="space-y-4">
       {/* Compact Search Card */}
       <Card className="border border-gray-200/50 shadow-medium bg-white/80 backdrop-blur-sm">
-        <CardContent className="p-6 lg:p-8">
+        <CardContent className="p-4 sm:p-6 lg:p-8">
           {/* Header Row */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
             <div className="flex items-center gap-2">
-              <div className="p-2 bg-gradient-primary rounded-lg">
-                <Search className="h-5 w-5 text-white" />
+              <div className="p-1.5 sm:p-2 bg-blue-900 rounded-lg border border-blue-800">
+                <Search className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
               </div>
-              <span className="font-bold text-gray-900 text-lg">Search Library</span>
+              <span className="font-bold text-gray-900 text-base sm:text-lg">Search Library</span>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="text-right">
-                <div className="text-sm text-gray-600 font-medium">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <div className="text-right hidden sm:block">
+                <div className="text-xs sm:text-sm text-gray-600 font-medium">
                   Total Resources: <span className="font-bold text-gray-900">{allBooks.length.toLocaleString()}</span>
                 </div>
               </div>
@@ -430,19 +430,19 @@ export function BookSearch() {
                 size="sm"
                 onClick={refreshBooks}
                 disabled={loading}
-                className="h-10 w-10 p-0 bg-white border-gray-300 hover:border-gray-400 hover:bg-gray-50 shadow-soft transition-all-smooth rounded-lg"
+                className="h-8 w-8 sm:h-10 sm:w-10 p-0 bg-white border-gray-300 hover:border-gray-400 hover:bg-gray-50 shadow-soft transition-all-smooth rounded-lg"
                 title="Refresh"
               >
-                <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
+                <RefreshCw className={`h-3 w-3 sm:h-4 sm:w-4 ${loading ? "animate-spin" : ""}`} />
               </Button>
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* Search Input */}
             <div className="relative">
               <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
-                <Search className="h-4 w-4 text-gray-400" />
+                <Search className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
               </div>
               <Input
                 ref={searchInputRef}
@@ -455,21 +455,21 @@ export function BookSearch() {
                     setShowSuggestions(true)
                   }
                 }}
-                className="pl-12 pr-12 h-12 border-2 border-gray-300 focus:border-blue-500 rounded-xl shadow-soft transition-all-smooth text-base"
+                className="pl-10 sm:pl-12 pr-10 sm:pr-12 h-10 sm:h-12 border-2 border-gray-300 focus:border-blue-500 rounded-lg sm:rounded-xl shadow-soft transition-all-smooth text-sm sm:text-base"
                 autoComplete="off"
               />
               {searchQuery && (
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 hover:bg-gray-100 rounded-full transition-colors-smooth"
+                  className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 h-6 w-6 sm:h-8 sm:w-8 p-0 hover:bg-gray-100 rounded-full transition-colors-smooth"
                   onClick={() => {
                     setSearchQuery("")
                     setShowSuggestions(false)
                     setSuggestions([])
                   }}
                 >
-                  <X className="h-3 w-3" />
+                  <X className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                 </Button>
               )}
 
@@ -529,10 +529,10 @@ export function BookSearch() {
             </div>
 
             {/* Filters and Actions */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <div className="flex-1">
                 <Select value={category} onValueChange={setCategory}>
-                  <SelectTrigger className="h-12 border-2 border-gray-200 focus:border-blue-500 rounded-xl shadow-soft transition-all-smooth">
+                  <SelectTrigger className="h-10 sm:h-12 border-2 border-gray-300 focus:border-blue-500 rounded-lg sm:rounded-xl shadow-soft transition-all-smooth">
                     <SelectValue placeholder="Select Category" />
                   </SelectTrigger>
                   <SelectContent>
@@ -546,21 +546,22 @@ export function BookSearch() {
                 </Select>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-2 sm:gap-3">
                 <Button
                   onClick={() => searchBooksWithField("all")}
                   disabled={loading}
-                  className="h-12 px-8 bg-blue-900 hover:bg-blue-800 hover:shadow-lg text-white font-semibold rounded-xl transition-all duration-300 border border-blue-800"
+                  className="h-10 sm:h-12 px-4 sm:px-8 bg-blue-900 hover:bg-blue-800 hover:shadow-lg text-white font-semibold rounded-lg sm:rounded-xl transition-all duration-300 border border-blue-800 flex-1 sm:flex-initial"
                 >
                   {loading ? (
                     <>
-                      <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                      Searching...
+                      <Loader2 className="h-3 w-3 sm:h-4 sm:w-4 animate-spin mr-1 sm:mr-2" />
+                      <span className="hidden sm:inline">Searching...</span>
+                      <span className="sm:hidden">Search</span>
                     </>
                   ) : (
                     <>
-                      <Search className="h-4 w-4 mr-2" />
-                      Search
+                      <Search className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                      <span>Search</span>
                     </>
                   )}
                 </Button>
@@ -569,27 +570,28 @@ export function BookSearch() {
                   <Button
                     variant="outline"
                     onClick={clearSearch}
-                    className="h-12 px-6 border-2 border-gray-200 hover:bg-gray-50 bg-white shadow-soft rounded-xl transition-all-smooth"
+                    className="h-10 sm:h-12 px-3 sm:px-6 border-2 border-gray-200 hover:bg-gray-50 bg-white shadow-soft rounded-lg sm:rounded-xl transition-all-smooth"
                   >
-                    <Filter className="h-4 w-4 mr-2" />
+                    <Filter className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                     <span className="hidden sm:inline">Clear</span>
+                    <span className="sm:hidden">Clear</span>
                   </Button>
                 )}
               </div>
             </div>
 
             {/* Search Tips */}
-            <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 bg-gray-50/50 p-4 rounded-xl border border-gray-200/50">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs text-gray-500 bg-gray-50/50 p-3 sm:p-4 rounded-lg sm:rounded-xl border border-gray-200/50">
               <div className="flex items-center gap-1">
-                <BookOpen className="h-3 w-3" />
+                <BookOpen className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                 <span className="font-medium">Titles</span>
               </div>
               <div className="flex items-center gap-1">
-                <User className="h-3 w-3" />
+                <User className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                 <span className="font-medium">Authors</span>
               </div>
               <div className="flex items-center gap-1">
-                <Hash className="h-3 w-3" />
+                <Hash className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                 <span className="font-medium">ISBN</span>
               </div>
             </div>
@@ -638,52 +640,52 @@ export function BookSearch() {
       {loading ? (
         <BookGridLoadingState count={6} />
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {books.map((book) => (
             <Card key={book.id} className="book-card shadow-soft border border-gray-200/50 bg-white/80 backdrop-blur-sm">
-              <CardHeader className="pb-4">
-                <div className="flex items-start justify-between mb-6">
+              <CardHeader className="pb-3 sm:pb-4">
+                <div className="flex items-start justify-between mb-4 sm:mb-6">
                   {/* Book Image */}
-                  <div className="w-20 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0 mr-4 shadow-soft">
+                  <div className="w-16 h-20 sm:w-20 sm:h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0 mr-3 sm:mr-4 shadow-soft">
                     {book.cover_image || book.featured_image ? (
                       <img
                         src={book.cover_image || book.featured_image}
                         alt={`Cover of ${book.title}`}
                         className="w-full h-full object-cover"
                         onError={(e) => {
-                          e.currentTarget.src = `/placeholder.svg?height=96&width=80&text=${encodeURIComponent(book.title.substring(0, 10))}`
+                          e.currentTarget.src = `/placeholder.svg?height=80&width=64&text=${encodeURIComponent(book.title.substring(0, 8))}`
                         }}
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-gray-400">
-                        <BookOpen className="h-8 w-8" />
+                        <BookOpen className="h-6 w-6 sm:h-8 sm:w-8" />
                       </div>
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <Badge className={`${getStatusColor(book.status)} font-semibold px-3 py-1 rounded-full`}>{getStatusText(book.status)}</Badge>
+                    <Badge className={`${getStatusColor(book.status)} font-semibold px-2 sm:px-3 py-1 rounded-full text-xs`}>{getStatusText(book.status)}</Badge>
                   </div>
                 </div>
-                <CardTitle className="text-xl line-clamp-2 font-bold tracking-tight">{book.title}</CardTitle>
-                <CardDescription className="text-base font-medium">by {book.author}</CardDescription>
+                <CardTitle className="text-lg sm:text-xl line-clamp-2 font-bold tracking-tight">{book.title}</CardTitle>
+                <CardDescription className="text-sm sm:text-base font-medium">by {book.author}</CardDescription>
               </CardHeader>
               <CardContent className="pt-0">
-                <div className="space-y-3">
-                  {book.isbn && <p className="text-sm text-gray-600 font-medium">ISBN: {book.isbn}</p>}
-                  <p className="text-sm text-gray-600 font-medium">Category: {book.category || ""}</p>
-                  {book.publisher && <p className="text-sm text-gray-600 font-medium">Publisher: {book.publisher}</p>}
-                  {book.price && <p className="text-sm text-gray-600 font-bold">Price: ₹{book.price}</p>}
+                <div className="space-y-2 sm:space-y-3">
+                  {book.isbn && <p className="text-xs sm:text-sm text-gray-600 font-medium">ISBN: {book.isbn}</p>}
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium">Category: {book.category || ""}</p>
+                  {book.publisher && <p className="text-xs sm:text-sm text-gray-600 font-medium">Publisher: {book.publisher}</p>}
+                  {book.price && <p className="text-xs sm:text-sm text-gray-600 font-bold">Price: ₹{book.price}</p>}
 
                   {/* Simplified Availability Info - Only Available count */}
-                  <div className="flex justify-end text-sm pt-2">
-                    <span className="text-green-600 font-bold bg-green-50 px-3 py-1 rounded-full">Available: {book.books_available || 0}</span>
+                  <div className="flex justify-end text-xs sm:text-sm pt-1 sm:pt-2">
+                    <span className="text-green-600 font-bold bg-green-50 px-2 sm:px-3 py-1 rounded-full">Available: {book.books_available || 0}</span>
                   </div>
 
-                  <div className="flex gap-3 mt-6">
+                  <div className="flex gap-2 sm:gap-3 mt-4 sm:mt-6">
                     {/* Update the Reserve button in the book cards to check borrowing limits */}
                     <Button
                       size="sm"
-                      className="flex-1 h-10 bg-blue-900 hover:bg-blue-800 hover:shadow-lg text-white font-semibold rounded-lg transition-all duration-300 border border-blue-800"
+                      className="flex-1 h-8 sm:h-10 bg-blue-900 hover:bg-blue-800 hover:shadow-lg text-white font-semibold rounded-lg transition-all duration-300 border border-blue-800 text-xs sm:text-sm"
                       disabled={
                         !isBookAvailable(book.status) ||
                         loading ||
@@ -706,10 +708,11 @@ export function BookSearch() {
                       size="sm" 
                       variant="outline" 
                       onClick={() => handleShowDetails(book)}
-                      className="h-10 px-4 border-gray-300 hover:border-gray-400 hover:bg-gray-50 shadow-soft rounded-lg transition-all-smooth"
+                      className="h-8 sm:h-10 px-2 sm:px-4 border-gray-300 hover:border-gray-400 hover:bg-gray-50 shadow-soft rounded-lg transition-all-smooth text-xs sm:text-sm"
                     >
-                      <Eye className="h-4 w-4 mr-1" />
-                      Details
+                      <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                      <span className="hidden sm:inline">Details</span>
+                      <span className="sm:hidden">View</span>
                     </Button>
                   </div>
                 </div>
@@ -738,30 +741,30 @@ export function BookSearch() {
 
       {/* Pagination */}
       {(totalBooks > 12 || page > 1) && (
-        <div className="flex justify-center pt-4">
-          <div className="flex items-center gap-3 bg-white rounded-xl shadow-medium border border-gray-200/50 p-2">
+        <div className="flex justify-center pt-4 px-4">
+          <div className="flex items-center gap-2 sm:gap-3 bg-white rounded-lg sm:rounded-xl shadow-medium border border-gray-200/50 p-1.5 sm:p-2 w-full max-w-md overflow-x-auto">
             <Button
               variant="outline"
               disabled={page <= 1 || loading}
               onClick={() => searchBooksWithField("all", page - 1)}
               size="sm"
-              className="border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all-smooth"
+              className="border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all-smooth text-xs sm:text-sm px-2 sm:px-4 h-8 sm:h-9"
             >
               {loading ? <LoadingSpinner size="sm" /> : "Previous"}
             </Button>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2">
               {page > 2 && (
                 <>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => searchBooksWithField("all", 1)}
-                    className="h-9 w-9 p-0 hover:bg-gray-100 transition-colors-smooth"
+                    className="h-7 w-7 sm:h-9 sm:w-9 p-0 hover:bg-gray-100 transition-colors-smooth text-xs sm:text-sm"
                   >
                     1
                   </Button>
-                  {page > 3 && <span className="text-gray-400">...</span>}
+                  {page > 3 && <span className="text-gray-400 text-xs sm:text-sm">...</span>}
                 </>
               )}
 
@@ -770,13 +773,13 @@ export function BookSearch() {
                   variant="ghost"
                   size="sm"
                   onClick={() => searchBooksWithField("all", page - 1)}
-                  className="h-9 w-9 p-0 hover:bg-gray-100 transition-colors-smooth"
+                  className="h-7 w-7 sm:h-9 sm:w-9 p-0 hover:bg-gray-100 transition-colors-smooth text-xs sm:text-sm"
                 >
                   {page - 1}
                 </Button>
               )}
 
-              <Button variant="default" size="sm" className="h-9 w-9 p-0 bg-blue-900 hover:bg-blue-800 text-white border border-blue-800 shadow-md">
+              <Button variant="default" size="sm" className="h-7 w-7 sm:h-9 sm:w-9 p-0 bg-blue-900 hover:bg-blue-800 text-white border border-blue-800 shadow-md text-xs sm:text-sm">
                 {page}
               </Button>
 
@@ -785,7 +788,7 @@ export function BookSearch() {
                   variant="ghost"
                   size="sm"
                   onClick={() => searchBooksWithField("all", page + 1)}
-                  className="h-9 w-9 p-0 hover:bg-gray-100 transition-colors-smooth"
+                  className="h-7 w-7 sm:h-9 sm:w-9 p-0 hover:bg-gray-100 transition-colors-smooth text-xs sm:text-sm"
                 >
                   {page + 1}
                 </Button>
@@ -797,7 +800,7 @@ export function BookSearch() {
               disabled={loading || books.length < 12}
               onClick={() => searchBooksWithField("all", page + 1)}
               size="sm"
-              className="border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all-smooth"
+              className="border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all-smooth text-xs sm:text-sm px-2 sm:px-4 h-8 sm:h-9"
             >
               {loading ? <LoadingSpinner size="sm" /> : "Next"}
             </Button>
@@ -807,7 +810,7 @@ export function BookSearch() {
 
       {/* Pagination Info */}
       {hasSearched && !loading && books.length > 0 && (
-        <div className="text-center text-sm text-gray-600 font-medium">
+        <div className="text-center text-xs sm:text-sm text-gray-600 font-medium px-4">
           Showing page {page} • {books.length} books on this page
           {books.length === 12 && " • More books available"}
         </div>
