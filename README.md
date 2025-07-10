@@ -22,7 +22,7 @@ The Library Management System is a cutting-edge Progressive Web Application buil
 
 ### **Developed By**
 - **Developer**: Usham Roy
-- **Client**: Praya Labs
+- **Given by**: Praya Labs
 - **Technology Stack**: Next.js 15, React 19, TypeScript, Tailwind CSS
 - **Architecture**: Progressive Web Application (PWA)
 
@@ -277,11 +277,11 @@ const borrowedBooks = await libraryAPI.getUserBorrowedBooks()
 ## Progressive Web App Features
 
 ### **PWA Capabilities**
-- ✅ **Offline Support** - Basic functionality without internet
-- ✅ **Installable** - Add to home screen on mobile/desktop
-- ✅ **Responsive Design** - Optimized for all screen sizes
-- ✅ **Fast Loading** - Optimized performance and caching
-- ✅ **App-like Experience** - Native app feel in browser
+- **Offline Support** - Basic functionality without internet [ by adding ICS file ]
+- **Installable** - Add to home screen on mobile/desktop
+- **Responsive Design** - Optimized for all screen sizes
+- **Fast Loading** - Optimized performance and caching
+- **App-like Experience** - Native app feel in browser
 
 ### **Installation**
 Users can install the app on their devices:
