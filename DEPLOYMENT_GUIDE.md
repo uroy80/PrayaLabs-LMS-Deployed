@@ -69,10 +69,7 @@ NODE_ENV=production
 ### Local Build
 ```bash
 # Install dependencies
-npm install
-
-# Run type checking
-npm run type-check
+npm install --legacy-peer-deps
 
 # Build the application
 npm run build
