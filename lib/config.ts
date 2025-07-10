@@ -5,7 +5,7 @@
 
 // Validate required environment variables
 const requiredEnvVars = {
-  LIBRARY_API_URL: process.env.NEXT_PUBLIC_LIBRARY_API_URL,
+  NEXT_PUBLIC_LIBRARY_API_URL: process.env.NEXT_PUBLIC_LIBRARY_API_URL,
 } as const
 
 // Check for missing environment variables
@@ -24,7 +24,7 @@ if (missingEnvVars.length > 0) {
  * API Configuration
  */
 export const API_CONFIG = {
-  BASE_URL: requiredEnvVars.LIBRARY_API_URL!,
+  BASE_URL: requiredEnvVars.NEXT_PUBLIC_LIBRARY_API_URL!,
   ENDPOINTS: {
     // Authentication
     LOGIN: "/web/user/login",
