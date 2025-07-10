@@ -1,16 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-// CORS headers
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-}
-
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 200, headers: corsHeaders })
-}
-
 // Enhanced CAPTCHA generation with more complexity
 function generateCaptcha(): { text: string; svg: string } {
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -135,13 +124,10 @@ export async function GET() {
     return NextResponse.json({
       id,
       svg: `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`,
-    }, { headers: corsHeaders })
+    })
   } catch (error) {
     console.error("CAPTCHA generation error:", error)
-    return NextResponse.json(
-      { error: "Failed to generate CAPTCHA" }, 
-      { status: 500, headers: corsHeaders }
-    )
+    return NextResponse.json({ error: "Failed to generate CAPTCHA" }, { status: 500 })
   }
 }
 
@@ -150,27 +136,18 @@ export async function POST(request: NextRequest) {
     const { id, answer } = await request.json()
 
     if (!id || !answer) {
-      return NextResponse.json(
-        { error: "Missing CAPTCHA ID or answer" }, 
-        { status: 400, headers: corsHeaders }
-      )
+      return NextResponse.json({ error: "Missing CAPTCHA ID or answer" }, { status: 400 })
     }
 
     const stored = captchaStore.get(id)
 
     if (!stored) {
-      return NextResponse.json(
-        { error: "CAPTCHA expired or invalid" }, 
-        { status: 400, headers: corsHeaders }
-      )
+      return NextResponse.json({ error: "CAPTCHA expired or invalid" }, { status: 400 })
     }
 
     if (stored.expires < Date.now()) {
       captchaStore.delete(id)
-      return NextResponse.json(
-        { error: "CAPTCHA expired" }, 
-        { status: 400, headers: corsHeaders }
-      )
+      return NextResponse.json({ error: "CAPTCHA expired" }, { status: 400 })
     }
 
     // Increment attempt counter
@@ -179,10 +156,7 @@ export async function POST(request: NextRequest) {
     // Limit attempts to prevent brute force
     if (stored.attempts > 5) {
       captchaStore.delete(id)
-      return NextResponse.json(
-        { error: "Too many attempts. Please refresh and try again." }, 
-        { status: 429, headers: corsHeaders }
-      )
+      return NextResponse.json({ error: "Too many attempts. Please refresh and try again." }, { status: 429 })
     }
 
     const isValid = stored.text === answer.toLowerCase().trim()
@@ -190,20 +164,17 @@ export async function POST(request: NextRequest) {
     if (isValid) {
       // Remove CAPTCHA after successful verification
       captchaStore.delete(id)
-      return NextResponse.json({ valid: true }, { headers: corsHeaders })
+      return NextResponse.json({ valid: true })
     } else {
       // Update the stored data with new attempt count
       captchaStore.set(id, stored)
       return NextResponse.json({
         valid: false,
         attemptsRemaining: 5 - stored.attempts,
-      }, { headers: corsHeaders })
+      })
     }
   } catch (error) {
     console.error("CAPTCHA verification error:", error)
-    return NextResponse.json(
-      { error: "Failed to verify CAPTCHA" }, 
-      { status: 500, headers: corsHeaders }
-    )
+    return NextResponse.json({ error: "Failed to verify CAPTCHA" }, { status: 500 })
   }
 }

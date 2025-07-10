@@ -101,50 +101,6 @@ The Library Management System is a cutting-edge Progressive Web Application buil
 
 ---
 
-## Vercel Deployment
-
-### Quick Deploy to Vercel
-
-1. **Connect to Vercel**
-   - Go to [vercel.com](https://vercel.com)
-   - Import your GitHub repository
-   - Vercel will auto-detect this as a Next.js project
-
-2. **Set Environment Variables**
-   - In Vercel Dashboard → Project → Settings → Environment Variables
-   - Add: `NEXT_PUBLIC_LIBRARY_API_URL` = `https://lib.prayalabs.com`
-   - (Optional) Add: `NEXT_PUBLIC_APP_NAME` = `Library Management System`
-
-3. **Deploy**
-   - Click "Deploy" - Vercel will automatically build and deploy
-   - Your app will be live at `https://your-project-name.vercel.app`
-
-### Deployment Configuration
-
-The project includes:
-- ✅ `vercel.json` - Vercel-specific configuration
-- ✅ Optimized `next.config.mjs` for Vercel
-- ✅ CORS headers for API routes
-- ✅ Production-ready build settings
-- ✅ Error handling for missing environment variables
-
-### Troubleshooting Vercel Deployment
-
-**Build Fails?**
-- Check that `NEXT_PUBLIC_LIBRARY_API_URL` is set in Vercel environment variables
-- Ensure the API URL is accessible from Vercel's servers
-
-**API Issues?**
-- Verify the API endpoint is CORS-enabled
-- Check Vercel function logs in the dashboard
-
-**Environment Variables Missing?**
-- Go to Vercel Dashboard → Settings → Environment Variables
-- Add all variables from `.env.example`
-- Redeploy the project
-
----
-
 ## Quick Start Guide
 
 ### **Prerequisites**
