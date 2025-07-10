@@ -417,12 +417,12 @@ export function BookSearch() {
               <div className="p-1.5 sm:p-2 bg-blue-900 rounded-lg border border-blue-800">
                 <Search className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
               </div>
-              <span className="font-bold text-gray-900 text-base sm:text-lg">Search Library</span>
+              <span className="font-black text-gray-900 text-base sm:text-lg">Search Library</span>
             </div>
             <div className="flex items-center gap-2 sm:gap-4">
               <div className="text-right hidden sm:block">
-                <div className="text-xs sm:text-sm text-gray-600 font-medium">
-                  Total Resources: <span className="font-bold text-gray-900">{allBooks.length.toLocaleString()}</span>
+                <div className="text-xs sm:text-sm text-gray-700 font-bold">
+                  Total Resources: <span className="font-black text-gray-900">{allBooks.length.toLocaleString()}</span>
                 </div>
               </div>
               <Button

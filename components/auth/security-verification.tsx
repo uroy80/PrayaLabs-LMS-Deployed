@@ -40,13 +40,13 @@ export function SecurityVerification({ onVerify, disabled = false }: SecurityVer
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center gap-2 text-sm font-bold text-gray-800">
+      <div className="flex items-center gap-2 text-sm font-black text-gray-900">
         <Shield className="h-4 w-4" />
         <span>Security Verification</span>
         {isVerified && (
-          <div className="flex items-center gap-1 text-green-700 font-bold">
+          <div className="flex items-center gap-1 text-green-700 font-black">
             <CheckCircle className="h-4 w-4" />
-            <span className="text-xs font-semibold">Verified</span>
+            <span className="text-xs font-black">Verified</span>
           </div>
         )}
       </div>
@@ -54,11 +54,11 @@ export function SecurityVerification({ onVerify, disabled = false }: SecurityVer
       <div className="bg-gradient-to-r from-gray-50 to-blue-50/30 border-2 border-gray-200 p-4 rounded-lg shadow-sm">
         <div className="flex items-center gap-4">
           <div className="flex-1">
-            <Label htmlFor="captcha" className="text-sm text-gray-700 font-semibold mb-2 block">
+            <Label htmlFor="captcha" className="text-sm text-gray-800 font-black mb-2 block">
               Please solve this math problem:
             </Label>
             <div className="flex items-center gap-3 mb-3">
-              <div className="bg-white px-4 py-3 rounded-lg border-2 border-gray-300 font-mono text-lg font-bold text-gray-900 shadow-sm">
+              <div className="bg-white px-4 py-3 rounded-lg border-2 border-gray-300 font-mono text-lg font-black text-gray-900 shadow-sm">
                 {num1} + {num2} = ?
               </div>
             </div>

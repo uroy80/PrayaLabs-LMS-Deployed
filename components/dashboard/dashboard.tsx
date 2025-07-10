@@ -32,23 +32,23 @@ export function Dashboard() {
               </div>
               <div>
                 {/* Show LMS on mobile, full title on desktop */}
-                <h1 className="text-lg sm:text-2xl font-bold text-gray-900 tracking-tight">
+                <h1 className="text-lg sm:text-2xl font-black text-gray-900 tracking-tight">
                   <span className="block sm:hidden">LMS</span>
                   <span className="hidden sm:block">Library Management System</span>
                 </h1>
-                <p className="text-xs sm:text-sm text-gray-600 font-medium hidden sm:block">Digital Library Portal</p>
+                <p className="text-xs sm:text-sm text-gray-700 font-bold hidden sm:block">Digital Library Portal</p>
               </div>
             </div>
             <div className="flex items-center space-x-2 sm:space-x-6">
               <div className="text-right hidden sm:block">
-                <p className="text-sm font-semibold text-gray-900">{user?.name}</p>
-                <p className="text-xs text-gray-500 font-medium">ID: {user?.uid}</p>
+                <p className="text-sm font-bold text-gray-900">{user?.name}</p>
+                <p className="text-xs text-gray-600 font-bold">ID: {user?.uid}</p>
               </div>
               <Button 
                 variant="outline" 
                 size="sm"
                 onClick={handleLogout}
-                className="border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors-smooth shadow-soft text-xs sm:text-sm px-2 sm:px-4"
+                className="border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-colors-smooth shadow-soft text-xs sm:text-sm px-2 sm:px-4 font-bold"
               >
                 <LogOut className="h-4 w-4 mr-2" />
                 <span className="hidden sm:inline">Sign Out</span>
@@ -63,10 +63,10 @@ export function Dashboard() {
       <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 animate-fade-in">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4 sm:space-y-8">
           <div className="flex justify-center">
-            <TabsList className="inline-flex h-10 sm:h-12 items-center justify-center rounded-lg sm:rounded-xl bg-white/95 backdrop-blur-md shadow-lg border border-gray-200 p-1 text-muted-foreground w-full max-w-2xl overflow-x-auto">
+            <TabsList className="inline-flex h-10 sm:h-12 items-center justify-center rounded-lg sm:rounded-xl bg-white/95 backdrop-blur-md shadow-lg border border-gray-200 p-1 text-muted-foreground w-full max-w-2xl overflow-x-auto font-bold">
               <TabsTrigger 
                 value="search" 
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-md sm:rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-1 sm:gap-2 flex-1 sm:flex-initial"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md sm:rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-bold ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-1 sm:gap-2 flex-1 sm:flex-initial"
               >
                 <Search className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span className="hidden sm:inline">Search Books</span>
@@ -74,7 +74,7 @@ export function Dashboard() {
               </TabsTrigger>
               <TabsTrigger 
                 value="profile" 
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-md sm:rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-1 sm:gap-2 flex-1 sm:flex-initial"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md sm:rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-bold ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-1 sm:gap-2 flex-1 sm:flex-initial"
               >
                 <User className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span className="hidden sm:inline">Profile</span>
@@ -82,7 +82,7 @@ export function Dashboard() {
               </TabsTrigger>
               <TabsTrigger 
                 value="borrowed" 
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-md sm:rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-1 sm:gap-2 flex-1 sm:flex-initial"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md sm:rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-bold ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-1 sm:gap-2 flex-1 sm:flex-initial"
               >
                 <BookOpen className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span className="hidden sm:inline">Borrowed</span>
@@ -90,7 +90,7 @@ export function Dashboard() {
               </TabsTrigger>
               <TabsTrigger 
                 value="reservations" 
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-md sm:rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-1 sm:gap-2 flex-1 sm:flex-initial"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md sm:rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-bold ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-1 sm:gap-2 flex-1 sm:flex-initial"
               >
                 <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span className="hidden sm:inline">Reservations</span>
@@ -99,7 +99,7 @@ export function Dashboard() {
             {ENV.IS_DEVELOPMENT && (
                 <TabsTrigger 
                   value="debug" 
-                  className="inline-flex items-center justify-center whitespace-nowrap rounded-md sm:rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-1 sm:gap-2 flex-1 sm:flex-initial"
+                  className="inline-flex items-center justify-center whitespace-nowrap rounded-md sm:rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-bold ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-1 sm:gap-2 flex-1 sm:flex-initial"
                 >
                   <Settings className="h-3 w-3 sm:h-4 sm:w-4" />
                   <span className="hidden sm:inline">Debug</span>
@@ -111,8 +111,8 @@ export function Dashboard() {
 
           <TabsContent value="search" className="space-y-4 sm:space-y-8 animate-slide-up">
             <div className="text-center space-y-2 sm:space-y-4">
-              <h2 className="text-xl sm:text-3xl font-bold text-gray-900 tracking-tight">Search Library Books</h2>
-              <p className="text-sm sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">Find and reserve books from our comprehensive digital collection</p>
+              <h2 className="text-xl sm:text-3xl font-black text-gray-900 tracking-tight">Search Library Books</h2>
+              <p className="text-sm sm:text-lg text-gray-700 font-bold max-w-2xl mx-auto px-4">Find and reserve books from our comprehensive digital collection</p>
             </div>
             <div>
               <BookSearch />
@@ -121,8 +121,8 @@ export function Dashboard() {
 
           <TabsContent value="profile" className="space-y-4 sm:space-y-8 animate-slide-up">
             <div className="text-center space-y-2 sm:space-y-4">
-              <h2 className="text-xl sm:text-3xl font-bold text-gray-900 tracking-tight">My Profile</h2>
-              <p className="text-sm sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">View your account information and library statistics</p>
+              <h2 className="text-xl sm:text-3xl font-black text-gray-900 tracking-tight">My Profile</h2>
+              <p className="text-sm sm:text-lg text-gray-700 font-bold max-w-2xl mx-auto px-4">View your account information and library statistics</p>
             </div>
             <div>
               <UserProfile />
@@ -131,8 +131,8 @@ export function Dashboard() {
 
           <TabsContent value="borrowed" className="space-y-4 sm:space-y-8 animate-slide-up">
             <div className="text-center space-y-2 sm:space-y-4">
-              <h2 className="text-xl sm:text-3xl font-bold text-gray-900 tracking-tight">Borrowed Books</h2>
-              <p className="text-sm sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">Manage your currently borrowed books and due dates</p>
+              <h2 className="text-xl sm:text-3xl font-black text-gray-900 tracking-tight">Borrowed Books</h2>
+              <p className="text-sm sm:text-lg text-gray-700 font-bold max-w-2xl mx-auto px-4">Manage your currently borrowed books and due dates</p>
             </div>
             <div>
               <BorrowedBooks />
@@ -141,8 +141,8 @@ export function Dashboard() {
 
           <TabsContent value="reservations" className="space-y-4 sm:space-y-8 animate-slide-up">
             <div className="text-center space-y-2 sm:space-y-4">
-              <h2 className="text-xl sm:text-3xl font-bold text-gray-900 tracking-tight">My Reservations</h2>
-              <p className="text-sm sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">View and manage your book reservations and requests</p>
+              <h2 className="text-xl sm:text-3xl font-black text-gray-900 tracking-tight">My Reservations</h2>
+              <p className="text-sm sm:text-lg text-gray-700 font-bold max-w-2xl mx-auto px-4">View and manage your book reservations and requests</p>
             </div>
             <div>
               <Reservations />
@@ -151,8 +151,8 @@ export function Dashboard() {
           {ENV.IS_DEVELOPMENT && (
             <TabsContent value="debug" className="space-y-4 sm:space-y-8 animate-slide-up">
               <div className="text-center space-y-2 sm:space-y-4">
-                <h2 className="text-xl sm:text-3xl font-bold text-gray-900 tracking-tight">Debug Information</h2>
-                <p className="text-sm sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">Development tools and API configuration</p>
+                <h2 className="text-xl sm:text-3xl font-black text-gray-900 tracking-tight">Debug Information</h2>
+                <p className="text-sm sm:text-lg text-gray-700 font-bold max-w-2xl mx-auto px-4">Development tools and API configuration</p>
               </div>
               <div>
                 <ApiConfigDebug />
