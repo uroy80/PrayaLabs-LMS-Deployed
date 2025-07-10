@@ -63,50 +63,50 @@ export function Dashboard() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
           <div className="flex justify-center">
-            <TabsList className="grid grid-cols-4 lg:grid-cols-4 bg-white/95 backdrop-blur-md shadow-xl border-2 border-gray-200 p-2 rounded-2xl">
+            <TabsList className="inline-flex h-12 items-center justify-center rounded-xl bg-white/95 backdrop-blur-md shadow-lg border border-gray-200 p-1 text-muted-foreground">
               <TabsTrigger 
                 value="search" 
-                className="flex items-center gap-2 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:border-2 data-[state=active]:border-blue-800 transition-all duration-300 rounded-xl px-4 py-3 font-semibold"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-2"
               >
-              <Search className="h-4 w-4" />
-              <span className="hidden sm:inline">Search Books</span>
-              <span className="sm:hidden">Search</span>
-            </TabsTrigger>
+                <Search className="h-4 w-4" />
+                <span className="hidden sm:inline">Search Books</span>
+                <span className="sm:hidden">Search</span>
+              </TabsTrigger>
               <TabsTrigger 
                 value="profile" 
-                className="flex items-center gap-2 data-[state=active]:bg-gradient-primary data-[state=active]:text-white data-[state=active]:shadow-soft transition-all-smooth rounded-lg px-4 py-2.5"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-2"
               >
-              <User className="h-4 w-4" />
-              <span className="hidden sm:inline">Profile</span>
-              <span className="sm:hidden">Profile</span>
-            </TabsTrigger>
+                <User className="h-4 w-4" />
+                <span className="hidden sm:inline">Profile</span>
+                <span className="sm:hidden">Profile</span>
+              </TabsTrigger>
               <TabsTrigger 
                 value="borrowed" 
-                className="flex items-center gap-2 data-[state=active]:bg-gradient-primary data-[state=active]:text-white data-[state=active]:shadow-soft transition-all-smooth rounded-lg px-4 py-2.5"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-2"
               >
-              <BookOpen className="h-4 w-4" />
-              <span className="hidden sm:inline">Borrowed</span>
-              <span className="sm:hidden">Books</span>
-            </TabsTrigger>
+                <BookOpen className="h-4 w-4" />
+                <span className="hidden sm:inline">Borrowed</span>
+                <span className="sm:hidden">Books</span>
+              </TabsTrigger>
               <TabsTrigger 
                 value="reservations" 
-                className="flex items-center gap-2 data-[state=active]:bg-gradient-primary data-[state=active]:text-white data-[state=active]:shadow-soft transition-all-smooth rounded-lg px-4 py-2.5"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-2"
               >
-              <Calendar className="h-4 w-4" />
-              <span className="hidden sm:inline">Reservations</span>
-              <span className="sm:hidden">Reserved</span>
+                <Calendar className="h-4 w-4" />
+                <span className="hidden sm:inline">Reservations</span>
+                <span className="sm:hidden">Reserved</span>
             </TabsTrigger>
             {ENV.IS_DEVELOPMENT && (
                 <TabsTrigger 
                   value="debug" 
-                  className="flex items-center gap-2 data-[state=active]:bg-gradient-primary data-[state=active]:text-white data-[state=active]:shadow-soft transition-all-smooth rounded-lg px-4 py-2.5"
+                  className="inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-sm gap-2"
                 >
-                <Settings className="h-4 w-4" />
-                <span className="hidden sm:inline">Debug</span>
-                <span className="sm:hidden">Debug</span>
-              </TabsTrigger>
+                  <Settings className="h-4 w-4" />
+                  <span className="hidden sm:inline">Debug</span>
+                  <span className="sm:hidden">Debug</span>
+                </TabsTrigger>
             )}
-          </TabsList>
+            </TabsList>
           </div>
 
           <TabsContent value="search" className="space-y-8 animate-slide-up">
