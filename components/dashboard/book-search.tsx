@@ -642,50 +642,88 @@ export function BookSearch() {
       ) : (
         <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {books.map((book) => (
-            <Card key={book.id} className="book-card shadow-soft border border-gray-200/50 bg-white/80 backdrop-blur-sm">
-              <CardHeader className="pb-3 sm:pb-4">
-                <div className="flex items-start justify-between mb-4 sm:mb-6">
+            <Card key={book.id} className="book-card shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-blue-300 bg-white backdrop-blur-sm transition-all duration-300 overflow-hidden group">
+              <CardHeader className="pb-4 sm:pb-6 bg-gradient-to-br from-white to-gray-50/50">
+                <div className="flex items-start gap-4 mb-4 sm:mb-6">
                   {/* Book Image */}
-                  <div className="w-16 h-20 sm:w-20 sm:h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0 mr-3 sm:mr-4 shadow-soft">
+                  <div className="w-20 h-28 sm:w-24 sm:h-32 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-lg border-2 border-gray-200 group-hover:shadow-xl transition-all duration-300">
                     {book.cover_image || book.featured_image ? (
                       <img
                         src={book.cover_image || book.featured_image}
                         alt={`Cover of ${book.title}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         onError={(e) => {
                           e.currentTarget.src = `/placeholder.svg?height=80&width=64&text=${encodeURIComponent(book.title.substring(0, 8))}`
                         }}
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-400">
-                        <BookOpen className="h-6 w-6 sm:h-8 sm:w-8" />
+                      <div className="w-full h-full flex flex-col items-center justify-center text-gray-400 p-2">
+                        <BookOpen className="h-8 w-8 sm:h-10 sm:w-10 mb-2" />
+                        <span className="text-xs text-center font-medium leading-tight">{book.title.substring(0, 20)}...</span>
                       </div>
                     )}
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <Badge className={`${getStatusColor(book.status)} font-semibold px-2 sm:px-3 py-1 rounded-full text-xs`}>{getStatusText(book.status)}</Badge>
+                  <div className="flex-1 min-w-0 space-y-3">
+                    <div className="flex justify-between items-start">
+                      <Badge className={`${getStatusColor(book.status)} font-bold px-3 py-1.5 rounded-full text-xs shadow-md border-2 border-white`}>
+                        {getStatusText(book.status)}
+                      </Badge>
+                      {book.books_available !== undefined && (
+                        <div className="text-right">
+                          <div className="text-xs font-bold text-gray-600">Available</div>
+                          <div className="text-lg font-black text-green-600">{book.books_available}</div>
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <CardTitle className="text-lg sm:text-xl line-clamp-2 font-black tracking-tight text-gray-900 group-hover:text-blue-900 transition-colors duration-300">
+                        {book.title}
+                      </CardTitle>
+                      <CardDescription className="text-sm sm:text-base font-bold text-gray-700 mt-1">
+                        by {book.author}
+                      </CardDescription>
+                    </div>
                   </div>
                 </div>
-                <CardTitle className="text-lg sm:text-xl line-clamp-2 font-bold tracking-tight">{book.title}</CardTitle>
-                <CardDescription className="text-sm sm:text-base font-medium">by {book.author}</CardDescription>
               </CardHeader>
-              <CardContent className="pt-0">
-                <div className="space-y-2 sm:space-y-3">
-                  {book.isbn && <p className="text-xs sm:text-sm text-gray-600 font-medium">ISBN: {book.isbn}</p>}
-                  <p className="text-xs sm:text-sm text-gray-600 font-medium">Category: {book.category || ""}</p>
-                  {book.publisher && <p className="text-xs sm:text-sm text-gray-600 font-medium">Publisher: {book.publisher}</p>}
-                  {book.price && <p className="text-xs sm:text-sm text-gray-600 font-bold">Price: ₹{book.price}</p>}
-
-                  {/* Simplified Availability Info - Only Available count */}
-                  <div className="flex justify-end text-xs sm:text-sm pt-1 sm:pt-2">
-                    <span className="text-green-600 font-bold bg-green-50 px-2 sm:px-3 py-1 rounded-full">Available: {book.books_available || 0}</span>
+              <CardContent className="pt-0 bg-gradient-to-b from-transparent to-gray-50/30">
+                <div className="space-y-3 sm:space-y-4">
+                  {/* Book Details Grid */}
+                  <div className="grid grid-cols-1 gap-2 bg-white/80 p-4 rounded-xl border border-gray-200 shadow-sm">
+                    {book.isbn && (
+                      <div className="flex items-center gap-2">
+                        <Hash className="h-3 w-3 text-blue-600" />
+                        <span className="text-xs font-bold text-gray-700">ISBN:</span>
+                        <span className="text-xs font-black text-gray-900">{book.isbn}</span>
+                      </div>
+                    )}
+                    <div className="flex items-center gap-2">
+                      <BookOpen className="h-3 w-3 text-purple-600" />
+                      <span className="text-xs font-bold text-gray-700">Category:</span>
+                      <span className="text-xs font-black text-gray-900">{book.category || "General"}</span>
+                    </div>
+                    {book.publisher && (
+                      <div className="flex items-center gap-2">
+                        <Building2 className="h-3 w-3 text-orange-600" />
+                        <span className="text-xs font-bold text-gray-700">Publisher:</span>
+                        <span className="text-xs font-black text-gray-900 truncate">{book.publisher}</span>
+                      </div>
+                    )}
+                    {book.price && (
+                      <div className="flex items-center gap-2">
+                        <DollarSign className="h-3 w-3 text-green-600" />
+                        <span className="text-xs font-bold text-gray-700">Price:</span>
+                        <span className="text-xs font-black text-green-700">₹{book.price}</span>
+                      </div>
+                    )}
                   </div>
 
-                  <div className="flex gap-2 sm:gap-3 mt-4 sm:mt-6">
+                  {/* Action Buttons */}
+                  <div className="flex gap-3 mt-6">
                     {/* Update the Reserve button in the book cards to check borrowing limits */}
                     <Button
                       size="sm"
-                      className="flex-1 h-8 sm:h-10 bg-blue-900 hover:bg-blue-800 hover:shadow-lg text-white font-semibold rounded-lg transition-all duration-300 border border-blue-800 text-xs sm:text-sm"
+                      className="flex-1 h-10 sm:h-12 bg-gradient-to-r from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 hover:shadow-xl text-white font-black rounded-xl transition-all duration-300 border-2 border-blue-700 shadow-lg text-sm group-hover:scale-105"
                       disabled={
                         !isBookAvailable(book.status) ||
                         loading ||
@@ -695,24 +733,35 @@ export function BookSearch() {
                       onClick={() => handleReserve(book.id)}
                     >
                       {loading ? (
-                        <LoadingSpinner size="sm" />
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                          <span>Reserving...</span>
+                        </>
                       ) : userProfile?.can_borrow_more === false ? (
-                        "Limit Reached"
+                        <>
+                          <AlertCircle className="h-4 w-4 mr-2" />
+                          <span>Limit Reached</span>
+                        </>
                       ) : isBookAvailable(book.status) && (book.books_available || 0) > 0 ? (
-                        "Reserve"
+                        <>
+                          <BookOpen className="h-4 w-4 mr-2" />
+                          <span>Reserve Book</span>
+                        </>
                       ) : (
-                        "Unavailable"
+                        <>
+                          <X className="h-4 w-4 mr-2" />
+                          <span>Unavailable</span>
+                        </>
                       )}
                     </Button>
                     <Button 
                       size="sm" 
                       variant="outline" 
                       onClick={() => handleShowDetails(book)}
-                      className="h-8 sm:h-10 px-2 sm:px-4 border-gray-300 hover:border-gray-400 hover:bg-gray-50 shadow-soft rounded-lg transition-all-smooth text-xs sm:text-sm"
+                      className="h-10 sm:h-12 px-4 border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50 shadow-lg rounded-xl transition-all duration-300 text-sm font-bold group-hover:scale-105"
                     >
-                      <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
-                      <span className="hidden sm:inline">Details</span>
-                      <span className="sm:hidden">View</span>
+                      <Eye className="h-4 w-4 mr-2" />
+                      <span>Details</span>
                     </Button>
                   </div>
                 </div>
