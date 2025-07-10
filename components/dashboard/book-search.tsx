@@ -550,7 +550,7 @@ export function BookSearch() {
                 <Button
                   onClick={() => searchBooksWithField("all")}
                   disabled={loading}
-                  className="h-12 px-8 bg-gradient-primary hover:shadow-medium text-white font-semibold rounded-xl transition-all-smooth"
+                  className="h-12 px-8 bg-blue-900 hover:bg-blue-800 hover:shadow-lg text-white font-semibold rounded-xl transition-all duration-300 border border-blue-800"
                 >
                   {loading ? (
                     <>
@@ -683,7 +683,7 @@ export function BookSearch() {
                     {/* Update the Reserve button in the book cards to check borrowing limits */}
                     <Button
                       size="sm"
-                      className="flex-1 h-10 bg-gradient-primary hover:shadow-medium text-white font-semibold rounded-lg transition-all-smooth"
+                      className="flex-1 h-10 bg-blue-900 hover:bg-blue-800 hover:shadow-lg text-white font-semibold rounded-lg transition-all duration-300 border border-blue-800"
                       disabled={
                         !isBookAvailable(book.status) ||
                         loading ||
@@ -776,7 +776,7 @@ export function BookSearch() {
                 </Button>
               )}
 
-              <Button variant="default" size="sm" className="h-9 w-9 p-0 bg-gradient-primary shadow-soft">
+              <Button variant="default" size="sm" className="h-9 w-9 p-0 bg-blue-900 hover:bg-blue-800 text-white border border-blue-800 shadow-md">
                 {page}
               </Button>
 
