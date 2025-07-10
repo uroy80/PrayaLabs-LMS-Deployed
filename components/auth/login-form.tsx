@@ -69,7 +69,6 @@ export function LoginForm() {
             <p className="text-lg text-gray-600 font-medium">Institutional Access Portal</p>
           </div>
         </div>
-        </div>
 
         {/* Login Card */}
         <Card className="shadow-2xl border-2 border-gray-200 bg-white/95 backdrop-blur-md animate-scale-in overflow-hidden">
