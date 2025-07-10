@@ -1,6 +1,10 @@
-# Library Management System PWA
+# Praya Labs - Library Management System PWA
 
-A modern, responsive Progressive Web Application for library management built with Next.js, TypeScript, and Tailwind CSS.
+Given by - Praya Labs
+
+Developed by : Usham Roy
+
+Progressive Web Application for library management built with Next.js, TypeScript, and Tailwind CSS.
 
 ## Features
 
