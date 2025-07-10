@@ -171,10 +171,6 @@ export function LoginForm() {
                     <span className="font-semibold">Auto-logout:</span>
                     <span className="font-semibold">On inactivity</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="font-semibold">Security:</span>
-                    <span className="font-semibold">Encrypted connection</span>
-                  </div>
                 </div>
               </div>
 
