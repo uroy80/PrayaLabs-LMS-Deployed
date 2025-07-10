@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { BookOpen, DollarSign, Package, Building2, Hash, Tag, Users, BookCheck, AlertCircle } from "lucide-react"
-import type { Book } from "@/lib/api"
+import type { Book, UserProfileType } from "@/lib/api"
 interface BookDetailsModalProps {
   book: Book | null
   isOpen: boolean
   onClose: () => void
   onReserve: (bookId: string) => void
   loading?: boolean
-  userProfile?: any // Add user profile to check limits
+  userProfile?: UserProfileType // Add user profile to check limits
 }
 
 export function BookDetailsModal({

@@ -3,6 +3,7 @@
 import type React from "react"
 import { createContext, useContext, useState, useEffect, useCallback } from "react"
 import { libraryAPI, ApiError } from "@/lib/api"
+import { apiClient } from "@/lib/api-client"
 
 // Helper to check if we're in a browser environment
 const isBrowser = typeof window !== "undefined"
@@ -206,6 +207,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           if (isSessionValid(userData)) {
             setUser(userData)
             setCsrfToken(savedToken)
+            // Set CSRF token in API client for restored sessions
+            apiClient.setDefaultHeaders({ 'X-CSRF-Token': savedToken })
             setSessionTimeRemaining(SESSION_DURATION - (Date.now() - userData.loginTime))
             verifySessionWithServer(userData.sessionId)
           } else {
@@ -248,6 +251,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setSessionTimeRemaining(SESSION_DURATION)
       setIsSessionExpired(false)
 
+      // Set CSRF token in API client for subsequent requests
+      apiClient.setDefaultHeaders({ 'X-CSRF-Token': data.csrf_token })
       // Store user data and session info
       if (isBrowser) {
         localStorage.setItem("library_user", JSON.stringify(userWithSession))
