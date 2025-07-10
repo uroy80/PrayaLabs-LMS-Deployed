@@ -2132,3 +2132,6 @@ export type {
   RequestedBook,
   FeaturedImageResponse,
 }
+
+// Add UserProfileType export for compatibility
+export type UserProfileType = UserProfile
