@@ -1,13 +1,31 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { API_CONFIG } from "@/lib/config"
 
+// CORS headers for all responses
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+  'Access-Control-Max-Age': '86400',
+}
+
+export async function OPTIONS(request: NextRequest) {
+  return new NextResponse(null, {
+    status: 200,
+    headers: corsHeaders,
+  })
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Read the request body directly as JSON
     const { endpoint, method = "GET", headers = {}, data } = await request.json()
 
     if (!endpoint) {
-      return NextResponse.json({ success: false, error: "Endpoint is required" }, { status: 400 })
+      return NextResponse.json(
+        { success: false, error: "Endpoint is required" }, 
+        { status: 400, headers: corsHeaders }
+      )
     }
 
     const baseUrl = API_CONFIG.BASE_URL
@@ -52,10 +70,13 @@ export async function POST(request: NextRequest) {
       status,
       data: responseData,
       headers: Object.fromEntries(response.headers),
-    })
+    }, { headers: corsHeaders })
   } catch (error) {
     console.error("Proxy error:", error)
-    return NextResponse.json({ success: false, error: error.message || "Unknown error" }, { status: 500 })
+    return NextResponse.json(
+      { success: false, error: error.message || "Unknown error" }, 
+      { status: 500, headers: corsHeaders }
+    )
   }
 }
 
@@ -65,7 +86,10 @@ export async function GET(request: NextRequest) {
     const endpoint = url.searchParams.get("endpoint")
 
     if (!endpoint) {
-      return NextResponse.json({ error: "Endpoint parameter required" }, { status: 400 })
+      return NextResponse.json(
+        { error: "Endpoint parameter required" }, 
+        { status: 400, headers: corsHeaders }
+      )
     }
 
     console.log("REQUEST: Proxy GET request:", endpoint)
@@ -98,10 +122,13 @@ export async function GET(request: NextRequest) {
         status: response.status,
         statusText: response.statusText,
       },
-      { status: response.ok ? 200 : response.status },
+      { status: response.ok ? 200 : response.status, headers: corsHeaders }
     )
   } catch (error) {
     console.error("ERROR: Proxy GET error:", error)
-    return NextResponse.json({ error: "Proxy request failed", details: error.message }, { status: 500 })
+    return NextResponse.json(
+      { error: "Proxy request failed", details: error.message }, 
+      { status: 500, headers: corsHeaders }
+    )
   }
 }

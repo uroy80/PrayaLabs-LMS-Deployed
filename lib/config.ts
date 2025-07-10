@@ -16,9 +16,9 @@ const missingEnvVars = Object.entries(requiredEnvVars)
 if (missingEnvVars.length > 0) {
   // Only throw error in production or when explicitly required
   if (process.env.NODE_ENV === 'production') {
-    throw new Error(
-      `Missing required environment variables: ${missingEnvVars.join(", ")}\n` +
-        "Please check your .env.local file and ensure all required variables are set.",
+    console.warn(
+      `⚠️  Missing environment variables: ${missingEnvVars.join(", ")}\n` +
+        "Using fallback API URL. Please set NEXT_PUBLIC_LIBRARY_API_URL in Vercel environment variables.",
     )
   } else {
     // In development, log warning but don't crash
