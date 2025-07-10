@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { BookOpen, DollarSign, Package, Building2, Hash, Tag, Users, BookCheck, AlertCircle } from "lucide-react"
+import { User as UserIcon } from "lucide-react"
 import type { Book, UserProfileType } from "@/lib/api"
 interface BookDetailsModalProps {
   book: Book | null
@@ -162,7 +163,7 @@ export function BookDetailsModal({
             {userProfile && (
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border-2 border-blue-200 shadow-lg">
                 <h3 className="text-lg font-black text-blue-900 mb-4 flex items-center">
-                  <User className="h-5 w-5 mr-2" />
+                  <UserIcon className="h-5 w-5 mr-2" />
                   Your Borrowing Status
                 </h3>
                 <div className="grid grid-cols-2 gap-6">

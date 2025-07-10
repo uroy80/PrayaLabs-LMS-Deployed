@@ -14,6 +14,7 @@ import { libraryAPI, type Book } from "@/lib/api"
 import { BookDetailsModal } from "./book-details-modal"
 import { BookSearchSkeleton } from "./book-search-skeleton"
 import { SearchLoadingState, BookGridLoadingState, LoadingSpinner } from "./loading-states"
+import { useAuth } from "@/components/auth/auth-context"
 
 interface SearchSuggestion {
   type: "title" | "author" | "isbn"
@@ -43,12 +44,18 @@ export function BookSearch() {
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1)
   const [allBooks, setAllBooks] = useState<Book[]>([])
 
+  // Get authentication state
+  const { user, authLoading } = useAuth()
+
   const searchInputRef = useRef<HTMLInputElement>(null)
   const suggestionsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    loadInitialData()
-  }, [])
+    // Only load data when authentication is ready and user is authenticated
+    if (!authLoading && user) {
+      loadInitialData()
+    }
+  }, [authLoading, user])
 
   // Load user profile along with initial data
   const loadInitialData = async () => {
