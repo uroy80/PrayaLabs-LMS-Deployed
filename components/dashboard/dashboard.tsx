@@ -27,7 +27,7 @@ export function Dashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
-              <div className="p-2 bg-gradient-primary rounded-xl shadow-medium mr-4">
+              <div className="p-3 bg-blue-900 rounded-xl shadow-lg mr-4 border border-blue-800">
                 <BookOpen className="h-8 w-8 text-white" />
               </div>
               <div>

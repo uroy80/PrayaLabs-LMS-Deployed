@@ -60,7 +60,7 @@ export function LoginForm() {
         {/* Header Section */}
         <div className="text-center space-y-6 animate-fade-in">
           <div className="flex justify-center">
-            <div className="p-4 bg-gradient-primary rounded-2xl shadow-strong">
+            <div className="p-4 bg-blue-900 rounded-2xl shadow-xl border-2 border-blue-800">
               <BookOpen className="h-12 w-12 text-white" />
             </div>
           </div>
