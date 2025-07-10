@@ -1,4 +1,4 @@
-# 📚 Library Management System PWA
+# Library Management System PWA
 
 <div align="center">
 
@@ -8,15 +8,15 @@
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
 ![PWA](https://img.shields.io/badge/PWA-Ready-purple?style=for-the-badge&logo=pwa)
 
-**A modern, responsive Progressive Web Application for comprehensive library management**
+A modern, responsive Progressive Web Application for comprehensive library management
 
-[🚀 Live Demo](#) • [📖 Documentation](./DOCUMENTATION.md) • [🔧 API Reference](./API_REFERENCE.md) • [🌐 Deployment Guide](./DEPLOYMENT_GUIDE.md)
+[Documentation](./DOCUMENTATION.md) • [API Reference](./API_REFERENCE.md) • [Deployment Guide](./DEPLOYMENT_GUIDE.md)
 
 </div>
 
 ---
 
-## 🌟 **Project Overview**
+## Project Overview
 
 The Library Management System is a cutting-edge Progressive Web Application built with **Next.js 15**, **React 19**, and **TypeScript**. It provides a complete digital solution for library operations, featuring advanced book management, user authentication, reservation systems, and modern PWA capabilities.
 
@@ -28,13 +28,13 @@ The Library Management System is a cutting-edge Progressive Web Application buil
 
 ---
 
-## ✨ **Key Features**
+## Key Features
 
 <table>
 <tr>
 <td width="50%">
 
-### 📖 **Core Library Features**
+### Core Library Features
 - **Advanced Book Search** with smart suggestions
 - **Real-time Book Availability** tracking
 - **Book Reservation System** with QR codes
@@ -45,7 +45,7 @@ The Library Management System is a cutting-edge Progressive Web Application buil
 </td>
 <td width="50%">
 
-### 🔐 **Security & Authentication**
+### Security & Authentication
 - **Secure User Authentication** with session management
 - **CSRF Protection** for all state-changing operations
 - **HTTP Basic Auth** integration with external APIs
@@ -57,7 +57,7 @@ The Library Management System is a cutting-edge Progressive Web Application buil
 <tr>
 <td width="50%">
 
-### 📱 **Modern Web Technologies**
+### Modern Web Technologies
 - **Progressive Web App** (PWA) with offline support
 - **Responsive Design** optimized for all devices
 - **Server-Side Rendering** (SSR) with Next.js 15
@@ -67,7 +67,7 @@ The Library Management System is a cutting-edge Progressive Web Application buil
 </td>
 <td width="50%">
 
-### 🚀 **Advanced Functionality**
+### Advanced Functionality
 - **Calendar Integration** with ICS file export
 - **QR Code Generation** for digital reservations
 - **Real-time Search Suggestions** with debouncing
@@ -80,7 +80,7 @@ The Library Management System is a cutting-edge Progressive Web Application buil
 
 ---
 
-## 🛠 **Technology Stack**
+## Technology Stack
 
 <div align="center">
 
@@ -101,7 +101,7 @@ The Library Management System is a cutting-edge Progressive Web Application buil
 
 ---
 
-## 🚀 **Quick Start Guide**
+## Quick Start Guide
 
 ### **Prerequisites**
 
@@ -158,7 +158,7 @@ Open your browser and navigate to: **http://localhost:3000**
 
 ---
 
-## 📁 **Project Structure**
+## Project Structure
 
 ```
 library-pwa/
@@ -195,7 +195,7 @@ library-pwa/
 
 ---
 
-## 🔧 **Available Scripts**
+## Available Scripts
 
 | **Command** | **Description** | **Usage** |
 |-------------|-----------------|-----------|
@@ -208,7 +208,7 @@ library-pwa/
 
 ---
 
-## 🌐 **API Integration**
+## API Integration
 
 ### **Authentication System**
 
@@ -257,7 +257,7 @@ const borrowedBooks = await libraryAPI.getUserBorrowedBooks()
 
 ---
 
-## 🔐 **Security Features**
+## Security Features
 
 <div align="center">
 
@@ -274,7 +274,7 @@ const borrowedBooks = await libraryAPI.getUserBorrowedBooks()
 
 ---
 
-## 📱 **Progressive Web App Features**
+## Progressive Web App Features
 
 ### **PWA Capabilities**
 - ✅ **Offline Support** - Basic functionality without internet
@@ -290,7 +290,7 @@ Users can install the app on their devices:
 
 ---
 
-## 🚀 **Deployment Options**
+## Deployment Options
 
 ### **Recommended: VPS Deployment**
 
@@ -330,7 +330,7 @@ pm2 start ecosystem.config.js --env production
 
 ---
 
-## 🔧 **Development Guide**
+## Development Guide
 
 ### **Code Style & Standards**
 
@@ -364,12 +364,12 @@ NEXT_PUBLIC_LIBRARY_API_URL=https://api.production.com
 
 ---
 
-## 🐛 **Troubleshooting**
+## Troubleshooting
 
 ### **Common Issues & Solutions**
 
 <details>
-<summary><strong>🔴 NPM Install Fails</strong></summary>
+<summary><strong>NPM Install Fails</strong></summary>
 
 **Problem**: Dependency conflicts with React 19
 
@@ -384,7 +384,7 @@ npm run install:clean
 </details>
 
 <details>
-<summary><strong>🔴 Environment Variable Error</strong></summary>
+<summary><strong>Environment Variable Error</strong></summary>
 
 **Problem**: Missing `NEXT_PUBLIC_LIBRARY_API_URL`
 
@@ -399,7 +399,7 @@ echo "NEXT_PUBLIC_LIBRARY_API_URL=https://your-api.com" >> .env.local
 </details>
 
 <details>
-<summary><strong>🔴 Authentication Fails</strong></summary>
+<summary><strong>Authentication Fails</strong></summary>
 
 **Problem**: API authentication errors
 
@@ -411,7 +411,7 @@ echo "NEXT_PUBLIC_LIBRARY_API_URL=https://your-api.com" >> .env.local
 </details>
 
 <details>
-<summary><strong>🔴 Build Errors</strong></summary>
+<summary><strong>Build Errors</strong></summary>
 
 **Problem**: TypeScript or build failures
 
@@ -430,41 +430,41 @@ npm run build
 
 ---
 
-## 📊 **Performance Metrics**
+## Performance Metrics
 
 <div align="center">
 
 | **Metric** | **Score** | **Status** |
 |------------|-----------|------------|
-| **Performance** | 95+ | ✅ Excellent |
-| **Accessibility** | 100 | ✅ Perfect |
-| **Best Practices** | 100 | ✅ Perfect |
-| **SEO** | 95+ | ✅ Excellent |
-| **PWA Score** | 100 | ✅ Perfect |
+| **Performance** | 95+ | Excellent |
+| **Accessibility** | 100 | Perfect |
+| **Best Practices** | 100 | Perfect |
+| **SEO** | 95+ | Excellent |
+| **PWA Score** | 100 | Perfect |
 
 </div>
 
 ---
 
-## 📚 **Documentation**
+## Documentation
 
 | **Document** | **Purpose** | **Audience** |
 |--------------|-------------|--------------|
-| [📖 **Complete Documentation**](./DOCUMENTATION.md) | Comprehensive technical guide | Developers |
-| [🔧 **API Reference**](./API_REFERENCE.md) | Detailed API documentation | Developers |
-| [🌐 **Deployment Guide**](./DEPLOYMENT_GUIDE.md) | VPS deployment instructions | DevOps |
-| [📋 **Handover Checklist**](./HANDOVER_CHECKLIST.md) | Project handover guide | Project Managers |
+| [**Complete Documentation**](./DOCUMENTATION.md) | Comprehensive technical guide | Developers |
+| [**API Reference**](./API_REFERENCE.md) | Detailed API documentation | Developers |
+| [**Deployment Guide**](./DEPLOYMENT_GUIDE.md) | VPS deployment instructions | DevOps |
+| [**Handover Checklist**](./HANDOVER_CHECKLIST.md) | Project handover guide | Project Managers |
 
 ---
 
-## 🤝 **Support & Maintenance**
+## Support & Maintenance
 
 ### **Getting Help**
 
-1. **📖 Check Documentation** - Comprehensive guides available
-2. **🔍 Search Issues** - Look for similar problems
-3. **📧 Contact Support** - Reach out for assistance
-4. **🐛 Report Bugs** - Submit detailed bug reports
+1. **Check Documentation** - Comprehensive guides available
+2. **Search Issues** - Look for similar problems
+3. **Contact Support** - Reach out for assistance
+4. **Report Bugs** - Submit detailed bug reports
 
 ### **Maintenance Schedule**
 
@@ -475,13 +475,13 @@ npm run build
 
 ---
 
-## 📄 **License**
+## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE) file for details.
 
 ---
 
-## 🙏 **Acknowledgments**
+## Acknowledgments
 
 - **Praya Labs** - Project client and requirements
 - **Next.js Team** - Amazing React framework
@@ -493,15 +493,15 @@ This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE
 
 <div align="center">
 
-**🚀 Ready to deploy? Check out our [VPS Deployment Guide](./DEPLOYMENT_GUIDE.md)**
+**Ready to deploy? Check out our [VPS Deployment Guide](./DEPLOYMENT_GUIDE.md)**
 
-**📖 Need help? Read the [Complete Documentation](./DOCUMENTATION.md)**
+**Need help? Read the [Complete Documentation](./DOCUMENTATION.md)**
 
-**🔧 API Integration? See the [API Reference](./API_REFERENCE.md)**
+**API Integration? See the [API Reference](./API_REFERENCE.md)**
 
 ---
 
-**Built with ❤️ by Usham Roy for Praya Labs**
+**Built with care by Usham Roy for Praya Labs**
 
 ![Made with Next.js](https://img.shields.io/badge/Made%20with-Next.js-black?style=for-the-badge&logo=next.js)
 ![Powered by React](https://img.shields.io/badge/Powered%20by-React-61DAFB?style=for-the-badge&logo=react)
