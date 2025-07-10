@@ -5,7 +5,6 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "install": "npm install --legacy-peer-deps",
     "install:clean": "rm -rf node_modules package-lock.json && npm install --legacy-peer-deps",
     "lint": "next lint",
     "start": "next start"
