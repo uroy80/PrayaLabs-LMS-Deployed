@@ -55,38 +55,38 @@ export function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       <div className="w-full max-w-md space-y-8">
         {/* Header Section */}
-        <div className="text-center space-y-4">
+        <div className="text-center space-y-6 animate-fade-in">
           <div className="flex justify-center">
-            <div className="p-4 bg-blue-600 rounded-lg shadow-md">
+            <div className="p-4 bg-gradient-primary rounded-2xl shadow-strong">
               <BookOpen className="h-12 w-12 text-white" />
             </div>
           </div>
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-gray-900">Library Management System</h1>
-            <p className="text-gray-600">Institutional Access Portal</p>
+          <div className="space-y-3">
+            <h1 className="text-4xl font-bold text-gray-900 tracking-tight">Library Management System</h1>
+            <p className="text-lg text-gray-600 font-medium">Institutional Access Portal</p>
           </div>
         </div>
 
         {/* Login Card */}
-        <Card className="shadow-lg border border-gray-200 bg-white">
-          <CardHeader className="text-center pb-6">
-            <CardTitle className="text-xl font-semibold text-gray-900">User Authentication</CardTitle>
-            <CardDescription className="text-gray-600">
+        <Card className="shadow-strong border border-gray-200/50 bg-white/80 backdrop-blur-sm animate-scale-in">
+          <CardHeader className="text-center pb-8 pt-8">
+            <CardTitle className="text-2xl font-bold text-gray-900 tracking-tight">User Authentication</CardTitle>
+            <CardDescription className="text-gray-600 text-base">
               Please enter your credentials to access the library system
             </CardDescription>
           </CardHeader>
-          <CardContent className="px-6 pb-6">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <CardContent className="px-8 pb-8">
+            <form onSubmit={handleSubmit} className="space-y-8">
               {/* Username Field */}
-              <div className="space-y-2">
-                <Label htmlFor="username" className="text-sm font-medium text-gray-700">
+              <div className="space-y-3">
+                <Label htmlFor="username" className="text-sm font-semibold text-gray-700">
                   Username
                 </Label>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                   <Input
                     id="username"
                     type="text"
@@ -95,18 +95,18 @@ export function LoginForm() {
                     required
                     disabled={isLoading}
                     placeholder="Enter your username"
-                    className="h-11 pl-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    className="h-12 pl-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500 rounded-xl shadow-soft transition-all-smooth"
                   />
                 </div>
               </div>
 
               {/* Password Field */}
-              <div className="space-y-2">
-                <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+              <div className="space-y-3">
+                <Label htmlFor="password" className="text-sm font-semibold text-gray-700">
                   Password
                 </Label>
                 <div className="relative">
-                  <Shield className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                  <Shield className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
@@ -115,12 +115,12 @@ export function LoginForm() {
                     required
                     disabled={isLoading}
                     placeholder="Enter your password"
-                    className="h-11 pl-10 pr-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    className="h-12 pl-12 pr-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500 rounded-xl shadow-soft transition-all-smooth"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors-smooth"
                     disabled={isLoading}
                   >
                     {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
@@ -129,14 +129,14 @@ export function LoginForm() {
               </div>
 
               {/* Security Verification */}
-              <div className="border-t border-gray-200 pt-6">
+              <div className="border-t border-gray-200 pt-8">
                 <SecurityVerification onVerify={handleSecurityVerify} disabled={isLoading} />
               </div>
 
               {/* Sign In Button */}
               <Button
                 type="submit"
-                className="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white font-medium"
+                className="w-full h-12 bg-gradient-primary hover:shadow-medium text-white font-semibold rounded-xl transition-all-smooth"
                 disabled={isLoading || !securityVerified}
               >
                 {isLoading ? (
@@ -153,40 +153,40 @@ export function LoginForm() {
               </Button>
 
               {/* Session Information */}
-              <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
-                <div className="flex items-center gap-2 text-sm font-medium text-blue-900 mb-3">
+              <div className="bg-blue-50/50 border border-blue-200/50 p-6 rounded-xl shadow-soft">
+                <div className="flex items-center gap-2 text-sm font-semibold text-blue-900 mb-4">
                   <Clock className="h-4 w-4" />
                   <span>Session Information</span>
                 </div>
-                <div className="space-y-2 text-sm text-blue-800">
+                <div className="space-y-3 text-sm text-blue-800">
                   <div className="flex justify-between">
-                    <span>Session Duration:</span>
-                    <span className="font-medium">10 minutes</span>
+                    <span className="font-medium">Session Duration:</span>
+                    <span className="font-semibold">10 minutes</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Auto-logout:</span>
-                    <span className="font-medium">On inactivity</span>
+                    <span className="font-medium">Auto-logout:</span>
+                    <span className="font-semibold">On inactivity</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Security:</span>
-                    <span className="font-medium">Encrypted connection</span>
+                    <span className="font-medium">Security:</span>
+                    <span className="font-semibold">Encrypted connection</span>
                   </div>
                 </div>
               </div>
 
               {/* Security Status */}
-              <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+              <div className="flex items-center justify-center gap-2 text-sm text-gray-600 font-medium">
                 <Shield className="h-4 w-4" />
                 <span>Secure Authentication System</span>
-                {securityVerified && <span className="text-green-700 font-medium ml-2">Verified</span>}
+                {securityVerified && <span className="text-green-700 font-semibold ml-2">✓ Verified</span>}
               </div>
             </form>
           </CardContent>
         </Card>
 
         {/* Footer */}
-        <div className="text-center text-sm text-gray-500">
-          <p>Library Management System</p>
+        <div className="text-center text-sm text-gray-500 font-medium animate-fade-in">
+          <p className="font-semibold">Library Management System</p>
           <p className="mt-1">Secure Access Portal</p>
         </div>
       </div>
