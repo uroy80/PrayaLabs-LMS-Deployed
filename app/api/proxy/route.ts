@@ -3,9 +3,8 @@ import { API_CONFIG } from "@/lib/config"
 
 export async function POST(request: NextRequest) {
   try {
-    // Read the request body as text first, then parse as JSON
-    const requestBody = await request.text()
-    const { endpoint, method = "GET", headers = {}, data } = JSON.parse(requestBody)
+    // Parse the request body directly as JSON
+    const { endpoint, method = "GET", headers = {}, data } = await request.json()
 
     if (!endpoint) {
       return NextResponse.json({ success: false, error: "Endpoint is required" }, { status: 400 })

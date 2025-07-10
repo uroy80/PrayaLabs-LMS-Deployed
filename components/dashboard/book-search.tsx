@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Search, BookOpen, Loader2, Filter, X, RefreshCw, AlertCircle, Eye, User, Hash, Sparkles } from "lucide-react"
+import { Search, BookOpen, Loader2, Filter, X, RefreshCw, AlertCircle, Eye, User, Hash, Sparkles, Building2, DollarSign } from "lucide-react"
 import { libraryAPI, type Book } from "@/lib/api"
 import { BookDetailsModal } from "./book-details-modal"
 import { BookSearchSkeleton } from "./book-search-skeleton"
