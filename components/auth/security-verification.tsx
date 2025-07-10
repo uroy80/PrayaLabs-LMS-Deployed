@@ -40,25 +40,25 @@ export function SecurityVerification({ onVerify, disabled = false }: SecurityVer
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
+      <div className="flex items-center gap-2 text-sm font-bold text-gray-800">
         <Shield className="h-4 w-4" />
         <span>Security Verification</span>
         {isVerified && (
-          <div className="flex items-center gap-1 text-green-700">
+          <div className="flex items-center gap-1 text-green-700 font-bold">
             <CheckCircle className="h-4 w-4" />
-            <span className="text-xs">Verified</span>
+            <span className="text-xs font-semibold">Verified</span>
           </div>
         )}
       </div>
 
-      <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+      <div className="bg-gradient-to-r from-gray-50 to-blue-50/30 border-2 border-gray-200 p-4 rounded-lg shadow-sm">
         <div className="flex items-center gap-4">
           <div className="flex-1">
-            <Label htmlFor="captcha" className="text-sm text-gray-600 mb-2 block">
+            <Label htmlFor="captcha" className="text-sm text-gray-700 font-semibold mb-2 block">
               Please solve this math problem:
             </Label>
             <div className="flex items-center gap-3 mb-3">
-              <div className="bg-white px-3 py-2 rounded border border-gray-300 font-mono text-lg font-semibold text-gray-800">
+              <div className="bg-white px-4 py-3 rounded-lg border-2 border-gray-300 font-mono text-lg font-bold text-gray-900 shadow-sm">
                 {num1} + {num2} = ?
               </div>
             </div>
@@ -71,8 +71,8 @@ export function SecurityVerification({ onVerify, disabled = false }: SecurityVer
               disabled={disabled}
               className={`h-10 ${
                 isVerified
-                  ? "border-green-500 bg-green-50 focus:border-green-600"
-                  : "border-gray-300 focus:border-blue-500"
+                  ? "border-2 border-green-500 bg-green-50 focus:border-green-600 focus:ring-2 focus:ring-green-500/20"
+                  : "border-2 border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
               }`}
             />
           </div>
@@ -82,7 +82,7 @@ export function SecurityVerification({ onVerify, disabled = false }: SecurityVer
             size="sm"
             onClick={generateNewProblem}
             disabled={disabled}
-            className="h-10 px-3 border-gray-300 hover:border-gray-400 hover:bg-gray-50 bg-transparent"
+            className="h-10 px-3 border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 bg-white shadow-sm"
             title="Generate new problem"
           >
             <RefreshCw className="h-4 w-4" />

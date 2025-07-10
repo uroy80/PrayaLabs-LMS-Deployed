@@ -63,10 +63,10 @@ export function Dashboard() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
           <div className="flex justify-center">
-            <TabsList className="grid grid-cols-4 lg:grid-cols-4 bg-white shadow-medium border border-gray-200/50 p-1 rounded-xl">
+            <TabsList className="grid grid-cols-4 lg:grid-cols-4 bg-white/95 backdrop-blur-md shadow-xl border-2 border-gray-200 p-2 rounded-2xl">
               <TabsTrigger 
                 value="search" 
-                className="flex items-center gap-2 data-[state=active]:bg-gradient-primary data-[state=active]:text-white data-[state=active]:shadow-soft transition-all-smooth rounded-lg px-4 py-2.5"
+                className="flex items-center gap-2 data-[state=active]:bg-blue-900 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:border-2 data-[state=active]:border-blue-800 transition-all duration-300 rounded-xl px-4 py-3 font-semibold"
               >
               <Search className="h-4 w-4" />
               <span className="hidden sm:inline">Search Books</span>
