@@ -845,11 +845,6 @@ tail -f /var/log/pm2/library-app.log
 tail -f /var/log/nginx/access.log
 ```
 
-### Emergency Contacts
-- **System Administrator**: [Contact Information]
-- **Application Developer**: [Contact Information]
-- **Domain/SSL Provider**: [Contact Information]
-- **VPS Provider**: [Contact Information]
 
 ---
 
