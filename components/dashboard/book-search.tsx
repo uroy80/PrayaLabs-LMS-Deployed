@@ -409,18 +409,20 @@ export function BookSearch() {
   return (
     <div className="space-y-4">
       {/* Compact Search Card */}
-      <Card className="border border-gray-300 shadow-sm bg-white">
-        <CardContent className="p-4 lg:p-6">
+      <Card className="border border-gray-200/50 shadow-medium bg-white/80 backdrop-blur-sm">
+        <CardContent className="p-6 lg:p-8">
           {/* Header Row */}
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
-              <Search className="h-5 w-5 text-blue-900" />
-              <span className="font-semibold text-gray-900">Search Library</span>
+              <div className="p-2 bg-gradient-primary rounded-lg">
+                <Search className="h-5 w-5 text-white" />
+              </div>
+              <span className="font-bold text-gray-900 text-lg">Search Library</span>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <div className="text-right">
-                <div className="text-sm text-gray-600">
-                  Total Resources: <span className="font-semibold">{allBooks.length.toLocaleString()}</span>
+                <div className="text-sm text-gray-600 font-medium">
+                  Total Resources: <span className="font-bold text-gray-900">{allBooks.length.toLocaleString()}</span>
                 </div>
               </div>
               <Button
@@ -428,7 +430,7 @@ export function BookSearch() {
                 size="sm"
                 onClick={refreshBooks}
                 disabled={loading}
-                className="h-8 w-8 p-0 bg-transparent"
+                className="h-10 w-10 p-0 bg-white border-gray-300 hover:border-gray-400 hover:bg-gray-50 shadow-soft transition-all-smooth rounded-lg"
                 title="Refresh"
               >
                 <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
@@ -436,10 +438,10 @@ export function BookSearch() {
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-6">
             {/* Search Input */}
             <div className="relative">
-              <div className="absolute left-3 top-1/2 transform -translate-y-1/2 z-10">
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
                 <Search className="h-4 w-4 text-gray-400" />
               </div>
               <Input
@@ -453,14 +455,14 @@ export function BookSearch() {
                     setShowSuggestions(true)
                   }
                 }}
-                className="pl-10 pr-10 h-10 border-2 border-gray-300 focus:border-blue-500 rounded-lg"
+                className="pl-12 pr-12 h-12 border-2 border-gray-300 focus:border-blue-500 rounded-xl shadow-soft transition-all-smooth text-base"
                 autoComplete="off"
               />
               {searchQuery && (
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0 hover:bg-gray-100 rounded-full"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 hover:bg-gray-100 rounded-full transition-colors-smooth"
                   onClick={() => {
                     setSearchQuery("")
                     setShowSuggestions(false)
@@ -475,17 +477,17 @@ export function BookSearch() {
               {showSuggestions && (
                 <div
                   ref={suggestionsRef}
-                  className="absolute top-full left-0 right-0 z-50 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl max-h-64 overflow-y-auto"
+                  className="absolute top-full left-0 right-0 z-50 mt-3 bg-white border border-gray-200/50 rounded-xl shadow-strong max-h-64 overflow-y-auto backdrop-blur-sm"
                 >
                   {suggestionLoading ? (
-                    <div className="p-3 text-center text-gray-500">
+                    <div className="p-4 text-center text-gray-500">
                       <Loader2 className="h-4 w-4 animate-spin inline mr-2" />
                       <span className="text-sm">Finding suggestions...</span>
                     </div>
                   ) : suggestions.length > 0 ? (
                     <>
-                      <div className="p-2 border-b border-gray-100 bg-gray-50">
-                        <div className="flex items-center gap-2 text-xs font-medium text-gray-600">
+                      <div className="p-3 border-b border-gray-100 bg-gray-50/50">
+                        <div className="flex items-center gap-2 text-xs font-semibold text-gray-600">
                           <Sparkles className="h-3 w-3" />
                           Suggestions
                         </div>
@@ -493,16 +495,16 @@ export function BookSearch() {
                       {suggestions.map((suggestion, index) => (
                         <div
                           key={`${suggestion.type}-${suggestion.value}`}
-                          className={`p-3 cursor-pointer hover:bg-blue-50 border-b border-gray-50 last:border-b-0 flex items-center gap-3 transition-colors ${
-                            index === selectedSuggestionIndex ? "bg-blue-50" : ""
+                          className={`p-4 cursor-pointer hover:bg-blue-50 border-b border-gray-50 last:border-b-0 flex items-center gap-3 transition-all-smooth ${
+                            index === selectedSuggestionIndex ? "bg-blue-50 border-blue-100" : ""
                           }`}
                           onClick={() => selectSuggestion(suggestion)}
                         >
                           <div className="flex-shrink-0">{getSuggestionIcon(suggestion.type)}</div>
                           <div className="flex-1 min-w-0">
-                            <div className="font-medium text-gray-900 truncate text-sm">{suggestion.value}</div>
+                            <div className="font-semibold text-gray-900 truncate text-sm">{suggestion.value}</div>
                             <div className="text-xs text-gray-500 flex items-center gap-1">
-                              <Badge variant="outline" className="text-xs">
+                              <Badge variant="outline" className="text-xs font-medium">
                                 {suggestion.type === "isbn" ? "ISBN" : suggestion.type.toUpperCase()}
                               </Badge>
                               {suggestion.book && suggestion.type !== "title" && (
@@ -517,7 +519,7 @@ export function BookSearch() {
                       ))}
                     </>
                   ) : (
-                    <div className="p-4 text-center text-gray-500">
+                    <div className="p-6 text-center text-gray-500">
                       <Search className="h-6 w-6 mx-auto mb-2 text-gray-300" />
                       <div className="text-sm">No suggestions found</div>
                     </div>
@@ -527,10 +529,10 @@ export function BookSearch() {
             </div>
 
             {/* Filters and Actions */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex-1">
                 <Select value={category} onValueChange={setCategory}>
-                  <SelectTrigger className="h-10 border-2 border-gray-200 focus:border-blue-500">
+                  <SelectTrigger className="h-12 border-2 border-gray-200 focus:border-blue-500 rounded-xl shadow-soft transition-all-smooth">
                     <SelectValue placeholder="Select Category" />
                   </SelectTrigger>
                   <SelectContent>
@@ -544,11 +546,11 @@ export function BookSearch() {
                 </Select>
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <Button
                   onClick={() => searchBooksWithField("all")}
                   disabled={loading}
-                  className="h-10 px-6 bg-blue-600 hover:bg-blue-700 text-white font-medium"
+                  className="h-12 px-8 bg-gradient-primary hover:shadow-medium text-white font-semibold rounded-xl transition-all-smooth"
                 >
                   {loading ? (
                     <>
@@ -567,7 +569,7 @@ export function BookSearch() {
                   <Button
                     variant="outline"
                     onClick={clearSearch}
-                    className="h-10 px-4 border-2 border-gray-200 hover:bg-gray-50 bg-transparent"
+                    className="h-12 px-6 border-2 border-gray-200 hover:bg-gray-50 bg-white shadow-soft rounded-xl transition-all-smooth"
                   >
                     <Filter className="h-4 w-4 mr-2" />
                     <span className="hidden sm:inline">Clear</span>
@@ -577,18 +579,18 @@ export function BookSearch() {
             </div>
 
             {/* Search Tips */}
-            <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 bg-gray-50 p-2 rounded">
+            <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 bg-gray-50/50 p-4 rounded-xl border border-gray-200/50">
               <div className="flex items-center gap-1">
                 <BookOpen className="h-3 w-3" />
-                <span>Titles</span>
+                <span className="font-medium">Titles</span>
               </div>
               <div className="flex items-center gap-1">
                 <User className="h-3 w-3" />
-                <span>Authors</span>
+                <span className="font-medium">Authors</span>
               </div>
               <div className="flex items-center gap-1">
                 <Hash className="h-3 w-3" />
-                <span>ISBN</span>
+                <span className="font-medium">ISBN</span>
               </div>
             </div>
           </div>
@@ -600,28 +602,28 @@ export function BookSearch() {
 
       {/* Status Messages */}
       {error && (
-        <Alert variant="destructive" className="border-red-300 bg-red-50">
+        <Alert variant="destructive" className="border-red-300 bg-red-50/50 shadow-soft rounded-xl">
           <AlertCircle className="h-4 w-4" />
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
 
       {hasSearched && !loading && (
-        <div className="bg-blue-50 border border-blue-200 p-3 rounded-lg">
-          <div className="text-sm text-blue-900">
+        <div className="bg-blue-50/50 border border-blue-200/50 p-4 rounded-xl shadow-soft">
+          <div className="text-sm text-blue-900 font-medium">
             {totalBooks > 0 ? (
               <>
-                Found "<span className="font-semibold">{totalBooks}</span>" book{totalBooks !== 1 ? "s" : ""}
+                Found "<span className="font-bold">{totalBooks}</span>" book{totalBooks !== 1 ? "s" : ""}
                 {searchQuery && (
                   <>
                     {" "}
-                    for "<span className="font-medium">{searchQuery}</span>"
+                    for "<span className="font-semibold">{searchQuery}</span>"
                   </>
                 )}
                 {category !== "all" && (
                   <>
                     {" "}
-                    in <span className="font-medium">{category}</span>
+                    in <span className="font-semibold">{category}</span>
                   </>
                 )}
               </>
@@ -636,52 +638,52 @@ export function BookSearch() {
       {loading ? (
         <BookGridLoadingState count={6} />
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {books.map((book) => (
-            <Card key={book.id} className="hover:shadow-md transition-shadow">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-4">
+            <Card key={book.id} className="book-card shadow-soft border border-gray-200/50 bg-white/80 backdrop-blur-sm">
+              <CardHeader className="pb-4">
+                <div className="flex items-start justify-between mb-6">
                   {/* Book Image */}
-                  <div className="w-16 h-20 bg-gray-100 rounded overflow-hidden flex-shrink-0 mr-3">
+                  <div className="w-20 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0 mr-4 shadow-soft">
                     {book.cover_image || book.featured_image ? (
                       <img
                         src={book.cover_image || book.featured_image}
                         alt={`Cover of ${book.title}`}
                         className="w-full h-full object-cover"
                         onError={(e) => {
-                          e.currentTarget.src = `/placeholder.svg?height=80&width=64&text=${encodeURIComponent(book.title.substring(0, 10))}`
+                          e.currentTarget.src = `/placeholder.svg?height=96&width=80&text=${encodeURIComponent(book.title.substring(0, 10))}`
                         }}
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-gray-400">
-                        <BookOpen className="h-6 w-6" />
+                        <BookOpen className="h-8 w-8" />
                       </div>
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <Badge className={getStatusColor(book.status)}>{getStatusText(book.status)}</Badge>
+                    <Badge className={`${getStatusColor(book.status)} font-semibold px-3 py-1 rounded-full`}>{getStatusText(book.status)}</Badge>
                   </div>
                 </div>
-                <CardTitle className="text-lg line-clamp-2">{book.title}</CardTitle>
-                <CardDescription>by {book.author}</CardDescription>
+                <CardTitle className="text-xl line-clamp-2 font-bold tracking-tight">{book.title}</CardTitle>
+                <CardDescription className="text-base font-medium">by {book.author}</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  {book.isbn && <p className="text-sm text-gray-600">ISBN: {book.isbn}</p>}
-                  <p className="text-sm text-gray-600">Category: {book.category || ""}</p>
-                  {book.publisher && <p className="text-sm text-gray-600">Publisher: {book.publisher}</p>}
-                  {book.price && <p className="text-sm text-gray-600 font-semibold">Price: ₹{book.price}</p>}
+              <CardContent className="pt-0">
+                <div className="space-y-3">
+                  {book.isbn && <p className="text-sm text-gray-600 font-medium">ISBN: {book.isbn}</p>}
+                  <p className="text-sm text-gray-600 font-medium">Category: {book.category || ""}</p>
+                  {book.publisher && <p className="text-sm text-gray-600 font-medium">Publisher: {book.publisher}</p>}
+                  {book.price && <p className="text-sm text-gray-600 font-bold">Price: ₹{book.price}</p>}
 
                   {/* Simplified Availability Info - Only Available count */}
-                  <div className="flex justify-end text-sm">
-                    <span className="text-green-600 font-medium">Available: {book.books_available || 0}</span>
+                  <div className="flex justify-end text-sm pt-2">
+                    <span className="text-green-600 font-bold bg-green-50 px-3 py-1 rounded-full">Available: {book.books_available || 0}</span>
                   </div>
 
-                  <div className="flex gap-2 mt-4">
+                  <div className="flex gap-3 mt-6">
                     {/* Update the Reserve button in the book cards to check borrowing limits */}
                     <Button
                       size="sm"
-                      className="flex-1"
+                      className="flex-1 h-10 bg-gradient-primary hover:shadow-medium text-white font-semibold rounded-lg transition-all-smooth"
                       disabled={
                         !isBookAvailable(book.status) ||
                         loading ||
@@ -700,7 +702,12 @@ export function BookSearch() {
                         "Unavailable"
                       )}
                     </Button>
-                    <Button size="sm" variant="outline" onClick={() => handleShowDetails(book)}>
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      onClick={() => handleShowDetails(book)}
+                      className="h-10 px-4 border-gray-300 hover:border-gray-400 hover:bg-gray-50 shadow-soft rounded-lg transition-all-smooth"
+                    >
                       <Eye className="h-4 w-4 mr-1" />
                       Details
                     </Button>
@@ -713,12 +720,16 @@ export function BookSearch() {
       )}
 
       {books.length === 0 && hasSearched && !loading && (
-        <Card>
-          <CardContent className="text-center py-8">
-            <BookOpen className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-500 mb-2">No books found</p>
+        <Card className="shadow-soft border border-gray-200/50 bg-white/80">
+          <CardContent className="text-center py-12">
+            <BookOpen className="h-16 w-16 text-gray-400 mx-auto mb-6" />
+            <p className="text-gray-500 mb-3 text-lg font-medium">No books found</p>
             <p className="text-sm text-gray-400">Try adjusting your search criteria or browse all books</p>
-            <Button variant="outline" onClick={clearSearch} className="mt-4 bg-transparent">
+            <Button 
+              variant="outline" 
+              onClick={clearSearch} 
+              className="mt-6 bg-white border-gray-300 hover:border-gray-400 hover:bg-gray-50 shadow-soft rounded-lg transition-all-smooth"
+            >
               Browse All Books
             </Button>
           </CardContent>
@@ -727,25 +738,26 @@ export function BookSearch() {
 
       {/* Pagination */}
       {(totalBooks > 12 || page > 1) && (
-        <div className="flex justify-center">
-          <div className="flex items-center gap-2">
+        <div className="flex justify-center pt-4">
+          <div className="flex items-center gap-3 bg-white rounded-xl shadow-medium border border-gray-200/50 p-2">
             <Button
               variant="outline"
               disabled={page <= 1 || loading}
               onClick={() => searchBooksWithField("all", page - 1)}
               size="sm"
+              className="border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all-smooth"
             >
               {loading ? <LoadingSpinner size="sm" /> : "Previous"}
             </Button>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-2">
               {page > 2 && (
                 <>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => searchBooksWithField("all", 1)}
-                    className="h-8 w-8 p-0"
+                    className="h-9 w-9 p-0 hover:bg-gray-100 transition-colors-smooth"
                   >
                     1
                   </Button>
@@ -758,13 +770,13 @@ export function BookSearch() {
                   variant="ghost"
                   size="sm"
                   onClick={() => searchBooksWithField("all", page - 1)}
-                  className="h-8 w-8 p-0"
+                  className="h-9 w-9 p-0 hover:bg-gray-100 transition-colors-smooth"
                 >
                   {page - 1}
                 </Button>
               )}
 
-              <Button variant="default" size="sm" className="h-8 w-8 p-0">
+              <Button variant="default" size="sm" className="h-9 w-9 p-0 bg-gradient-primary shadow-soft">
                 {page}
               </Button>
 
@@ -773,7 +785,7 @@ export function BookSearch() {
                   variant="ghost"
                   size="sm"
                   onClick={() => searchBooksWithField("all", page + 1)}
-                  className="h-8 w-8 p-0"
+                  className="h-9 w-9 p-0 hover:bg-gray-100 transition-colors-smooth"
                 >
                   {page + 1}
                 </Button>
@@ -785,6 +797,7 @@ export function BookSearch() {
               disabled={loading || books.length < 12}
               onClick={() => searchBooksWithField("all", page + 1)}
               size="sm"
+              className="border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all-smooth"
             >
               {loading ? <LoadingSpinner size="sm" /> : "Next"}
             </Button>
@@ -794,7 +807,7 @@ export function BookSearch() {
 
       {/* Pagination Info */}
       {hasSearched && !loading && books.length > 0 && (
-        <div className="text-center text-sm text-gray-600">
+        <div className="text-center text-sm text-gray-600 font-medium">
           Showing page {page} • {books.length} books on this page
           {books.length === 12 && " • More books available"}
         </div>
